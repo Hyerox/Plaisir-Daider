@@ -2,6 +2,7 @@
 $pageTitle = 'Jardinage';
 require_once "../partials/header.php";
 ?>
+
 <main>
     <section class="relative h-[700px] z-0">
         <img src="/plaisirdaider/images/jardinage.fond.png" class="absolute inset-0 w-full h-full object-cover object-[center_65%] filter brightness-90" alt="un jardin propre"/>
@@ -12,12 +13,57 @@ require_once "../partials/header.php";
                     Services de Jardinage
                 </h1>
                 <p class="text-2xl md:text-3xl mb-8 text-white font-medium drop-shadow-lg max-w-2xl mx-auto">
-                    Entretien de votre jardin
+                    Entretien de votre espace extérieur
                 </p>
-                <a href="#services" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
-                    En savoir plus
-                </a>
             </div>
         </div>
     </section>
+    <article class="py-16 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Nos Services d'Entretien Extérieur</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Service Débroussaillage -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
+                    <img src="/plaisirdaider/images/debroussaillage2.png" alt="Un homme débroussaille" class="w-full h-96 object-cover object-bottom">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3">Débroussaillage</h3>
+                        <p class="text-xl text-gray-600">Nettoyage des zones envahies par la végétation.</p>
+                    </div>
+                </div>
+
+                <!-- Service Tonte -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
+                    <img src="/plaisirdaider/images/tondeuse.jpg" alt="Tonte de gazon" class="w-full h-96 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3">Tonte de gazon</h3>
+                        <p class="text-xl text-gray-600">Entretien de votre pelouse pour un jardin impeccable.</p>
+                    </div>
+                </div>
+
+                <!-- Service Élagage -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
+                    <img src="/plaisirdaider/images/elagage.png" alt="Une homme coupe des branches" class="w-full h-96 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3">Élagage</h3>
+                        <p class="text-xl text-gray-600">Taille de vos arbres et arbustes.</p>
+                    </div>
+                </div>
+
+                <!-- Service Taille de Haie -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer md:last:odd:col-span-2 md:last:odd:mx-auto md:last:odd:max-w-[48%]">
+                    <img src="/plaisirdaider/images/taille-haie.png" alt="Un homme taille une haie" class="w-full h-96 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3">Taille de haie</h3>
+                        <p class="text-xl text-gray-600">Taille soignée de vos haies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
 </main>
+
+<?php
+
+require_once "../partials/footer.php";
+?>

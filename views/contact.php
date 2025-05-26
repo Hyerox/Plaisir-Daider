@@ -7,7 +7,7 @@ require_once "../partials/header.php";
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-orange-900">Contactez-nous</h2>
             <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                <form action="traitement_contact.php" method="POST" class="space-y-6">
+                <form action="../controllers/contactController.php" method="POST" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label for="nom" class="block text-orange-900 font-medium mb-2">Nom</label>
@@ -41,7 +41,17 @@ require_once "../partials/header.php";
                             Envoyer le message
                         </button>
                     </div>
+                    <?php if (isset($_GET['success'])): ?>
+                    <div class="mb-6 text-green-700 bg-green-100 p-4 rounded">Message envoyé avec succès !</div>
+                    <?php elseif (isset($_GET['error'])): ?>
+                    <div class="mb-6 text-red-700 bg-red-100 p-4 rounded">Une erreur est survenue. Merci de réessayer.</div>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
     </section>
+
+    <?php
+
+require_once "../partials/footer.php";
+?>

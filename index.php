@@ -1,7 +1,4 @@
 <?php
-require_once 'models/Model.php';
-require_once 'controllers/Controller.php';
-require_once 'views/View.php';
 
 $pageTitle = 'Accueil';
 require_once "./partials/header.php";
@@ -34,9 +31,9 @@ require_once "./partials/header.php";
                 </p>
                 
                 <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <a href="#services" 
+                    <a href="#prestations" 
                        class="bg-orange-200 text-orange-900 px-8 py-4 rounded-lg font-bold hover:bg-orange-300 transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        Découvrir nos services
+                        Découvrir nos prestations
                     </a>
                     <a href="views/contact.php" 
                        class="bg-white/20 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white/30 transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
@@ -58,44 +55,80 @@ require_once "./partials/header.php";
 
                     </p>
                     <p class="text-orange-800 text-lg leading-relaxed mb-8">
-                        Notre zone d'activité s'étend sur tout le territoire local. Pour découvrir nos différents services, 
-                        consultez notre rubrique <a href="#services" class="text-orange-600 hover:text-orange-700 underline font-medium">Nos Services</a>.
+                        Notre zone d'activité s'étend sur tout le territoire local. Pour découvrir nos différents prestations, 
+                        consultez notre rubrique <a href="#prestations" class="text-orange-600 hover:text-orange-700 font-medium">Nos prestations</a>.
                     </p>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-lg">
-                    <div id="map" class="h-[400px] rounded-lg shadow-inner"></div>
+                
+                <div>
+                    <h2 class="text-2xl font-bold text-center mb-6 text-orange-900">Notre secteur d'activité</h2>
+                    <div class="bg-white p-4 rounded-lg shadow-lg">
+                        <div id="map" class="h-[400px] rounded-lg shadow-inner"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            <!-- Move and center "Nos points forts" -->
+            <hr class="my-12 h-1 bg-gradient-to-r from-orange-200 via-orange-400 to-orange-200 border-0 rounded-full max-w-4xl mx-auto">
+            
+            <div class="mt-10 mx-auto text-center max-w-3xl">
+                <h3 class="text-2xl md:text-3xl font-bold text-orange-900 mb-8 relative">
+                    <span class="relative inline-block">
+                        Nos points forts
+                        <div class="absolute -bottom-2 left-0 w-full h-1 bg-orange-300 transform -skew-x-12"></div>
+                    </span>
+                </h3>
+                <ul class="list-none text-orange-800 space-y-4 inline-block text-left text-lg md:text-xl">
+                    <li>Notre attention au détail</li>
+                    <li>Notre disponibilité</li>
+                    <li>Notre aimabilité</li>
+            </div>
+        </div>
+        
+        
         <script>
             // Initialiser la carte
-            const map = L.map('map').setView([43.4283, 6.2375], 10); // Coordonnées du Var
+            const map = L.map('map').setView([43.304639, 6.088750], 11); // Centré sur votre position
 
             // Ajouter la couche OpenStreetMap
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            // Définir la zone d'activité (exemple avec un cercle)
-            const circle = L.circle([43.4283, 6.2375], {
-                color: '#f97316', // orange-500
-                fillColor: '#fdba74', // orange-300
-                fillOpacity: 0.3,
-                radius: 15000 // 15km de rayon
+            // Définir la zone d'activité avec un polygone
+            const zonePolygon = L.polygon([
+            [43.4600, 5.8600], // St-Maximin
+            [43.5000, 6.0500], // Nord Brignoles
+            [43.4349, 6.4414], // Nord Vidauban
+            [43.3000, 6.2500], // Est La Londe
+            [43.1200, 6.1500], // Sud Hyères
+            [43.1100, 5.9500], // Sud Toulon
+            [43.2000, 5.8600], // Ouest Ollioules
+            [43.3700, 5.8500], // Retour vers St-Max
+            ], {
+            color: '#f97316',      // orange
+            weight: 2,
+            fillColor: '#fdba74',  // orange clair
+            fillOpacity: 0.25,
+            smoothFactor: 1
             }).addTo(map);
 
+
             // Ajouter un marqueur pour le siège de l'entreprise
-            const marker = L.marker([43.4283, 6.2375])
+            const marker = L.marker([43.304639, 6.088750])
                 .addTo(map)
                 .bindPopup('Plaisir d\'Aider')
                 .openPopup();
+
+            // Ajuster la vue pour montrer toute la zone
+            map.fitBounds(zonePolygon.getBounds());
+
         </script>
     </section>
 
-    <!-- Section Services -->
-    <section id="services" class="py-8 bg-orange-50">
-        <h2 class="text-3xl font-bold text-center mb-6 text-orange-900">Nos Services</h2>
+    <!-- Section prestations -->
+    <section id="prestations" class="py-8 bg-orange-50">
+        <h2 class="text-3xl font-bold text-center mb-6 text-orange-900">Nos prestations</h2>
         <div class="container mx-auto px-4 relative">
             <!-- Slider container -->
             <div class="overflow-hidden relative">
@@ -110,6 +143,7 @@ require_once "./partials/header.php";
                             <div class="relative z-10">
                                 <h3 class="text-2xl font-semibold mb-2 text-white">Ménage</h3>
                                 <p class="text-gray-100">Entretien de votre maison</p>
+                                <p class="text-gray-100 mt-2 italic">Cliquez sur l'image pour plus d'informations ...</p>
                             </div>
                         </div>
                     </div>
@@ -123,6 +157,7 @@ require_once "./partials/header.php";
                             <div class="relative z-10">
                                 <h3 class="text-2xl font-semibold mb-2 text-white">Jardinage</h3>
                                 <p class="text-gray-100">Entretien de votre jardin</p>
+                                <p class="text-gray-100 mt-2 italic">Cliquez sur l'image pour plus d'informations ...</p>
                             </div>
                         </div>
                     </div>
@@ -136,6 +171,7 @@ require_once "./partials/header.php";
                             <div class="relative z-10">
                                 <h3 class="text-2xl font-semibold mb-2 text-white">Bricolage</h3>
                                 <p class="text-gray-100">Débarrassage de surplus</p>
+                                <p class="text-gray-100 mt-2 italic">Cliquez sur l'image pour plus d'informations ...</p>
                             </div>
                         </div>
                     </div>
@@ -149,6 +185,21 @@ require_once "./partials/header.php";
                             <div class="relative z-10">
                                 <h3 class="text-2xl font-semibold mb-2 text-white">Débarras</h3>
                                 <p class="text-gray-100">Débarrassage de surplus</p>
+                                <p class="text-gray-100 mt-2 italic">Cliquez sur l'image pour plus d'informations ...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service 5 -->
+                    <div class="w-full flex-shrink-0">
+                        <div class="bg-gray-900/70 p-6 rounded-lg shadow-lg border-2 border-orange-200 mx-4 overflow-hidden">
+                            <div class="h-[700px] -mx-6 -mt-6 mb-4 relative">
+                                <a href="views/transport.php"><img src="images/transport.jpg" class="w-full h-full object-cover object-bottom" alt="tas de mauvais herbe"/></a>
+                                <div class="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-gray-900 to-transparent opacity-50"></div>
+                            </div>
+                            <div class="relative z-10">
+                                <h3 class="text-2xl font-semibold mb-2 text-white">Transport</h3>
+                                <p class="text-gray-100">Accompagnement et transport de personnes</p>
+                                <p class="text-gray-100 mt-2 italic">Cliquez sur l'image pour plus d'informations ...</p>
                             </div>
                         </div>
                     </div>
@@ -167,42 +218,8 @@ require_once "./partials/header.php";
                     <button class="w-3 h-3 rounded-full bg-orange-200 transition-all"></button>
                     <button class="w-3 h-3 rounded-full bg-orange-200/50 transition-all"></button>
                     <button class="w-3 h-3 rounded-full bg-orange-200/50 transition-all"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Prestations -->
-    <section class="py-16 bg-orange-100" id="prestation">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-orange-900">Nos Prestations</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-orange-900 mb-4">Services intérieur</h3>
-                    <ul class="text-orange-800 space-y-2">
-                        <li>• Ménage</li>
-                        <li>• Repassage</li>
-                        <li>•</li>
-                        <li>•</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-orange-900 mb-4">Services extérieurs</h3>
-                    <ul class="text-orange-800 space-y-2">
-                        <li>• Entretien du jardin</li>
-                        <li>• Bricolage</li>
-                        <li>• Débarrassage</li>
-                        <li>• Entretien de piscine</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-orange-900 mb-4">Accompagnement</h3>
-                    <ul class="text-orange-800 space-y-2">
-                        <li>• Transport</li>
-                        <li>• </li>
-                        <li>• </li>
-                        <li>• </li>
-                    </ul>
+                    <button class="w-3 h-3 rounded-full bg-orange-200/50 transition-all"></button>
+                    <button class="w-3 h-3 rounded-full bg-orange-200/50 transition-all"></button>
                 </div>
             </div>
         </div>
@@ -232,6 +249,7 @@ require_once "./partials/header.php";
                 currentSlide = index;
                 
                 slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+
                 
                 // Update dots
                 dots.forEach((dot, i) => {
@@ -305,3 +323,6 @@ require_once "./partials/header.php";
     </script>
 </main>
 
+<?php
+require_once "./partials/footer.php";
+?>
