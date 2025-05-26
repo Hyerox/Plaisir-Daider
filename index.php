@@ -44,7 +44,16 @@ require_once "./partials/header.php";
         </div>
     </section>
 
-    <section>
+    <!-- Section flottante pour le devis -->
+    <div id="floating-cta" class="fixed bottom-8 right-8 transform translate-y-[200%] transition-transform duration-500 z-[999]">
+        <a href="views/contact.php" 
+           class="bg-orange-500 text-white px-6 py-4 rounded-full font-bold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
+            <span>Demandez votre devis</span>
+            
+        </a>
+    </div>
+
+    <section id="aPropos">
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-3xl font-bold text-center mb-12 text-orange-900">À Propos de Nous</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -319,6 +328,21 @@ require_once "./partials/header.php";
 
             // Start autoplay on load
             startAutoplay();
+
+            // Floating CTA logic
+            const floatingCta = document.getElementById('floating-cta');
+            const aProposSection = document.getElementById('aPropos');
+            
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                const aProposSectionPosition = aProposSection.getBoundingClientRect().top + window.scrollY;
+                
+                if (scrollPosition > aProposSectionPosition - 500) {
+                    floatingCta.style.transform = 'translateY(0)';
+                } else {
+                    floatingCta.style.transform = 'translateY(200%)';
+                }
+            });
         });
     </script>
 </main>

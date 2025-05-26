@@ -4,7 +4,7 @@
         <div>
             <h4 class="text-xl font-semibold mb-4">Liens utiles</h4>
             <ul class="space-y-2 text-orange-800">
-                <li><a href="/PlaisirDaider/index.php" class="hover:text-orange-600 transition">Accueil</a></li>
+                <li><a href="/PlaisirDaider/" class="hover:text-orange-600 transition">Accueil</a></li>
                 <li><a href="#prestations" class="hover:text-orange-600 transition">Nos prestations</a></li>
                 <li><a href="views/contact.php" class="hover:text-orange-600 transition">Contact</a></li>
             </ul>
