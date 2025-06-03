@@ -5,7 +5,7 @@ require_once "../partials/header.php";
 
 <main>
     <section class="relative h-[700px] z-0">
-        <img src="/plaisirdaider/images/transport_hero.jpg" class="absolute inset-0 w-full h-full object-cover object-[center_65%] filter brightness-90" alt="transport accompagné"/>
+        <img src="/plaisirdaider/images/transport-hero.webp" class="absolute inset-0 w-full h-full object-cover object-top filter brightness-90" alt="transport accompagné"/>
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
         <div class="relative container mx-auto px-4 h-full flex items-center justify-center">
             <div class="text-center space-y-8">
@@ -19,35 +19,35 @@ require_once "../partials/header.php";
         </div>
     </section>
 
-    <article class="py-16 px-4 bg-gray-50">
+    <article class="py-16 px-4 bg-gradient-to-br from-[#f7f6f2] via-[#eef3e6] to-[#e1e9d4]">
         <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12">Nos Services de Transport</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 text-[#2f3e2d]">Nos Services de Transport</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Transport médical -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
-                    <img src="/plaisirdaider/images/transport-medical.jpg" alt="Transport médical" class="w-full h-96 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-3">Transport médical</h3>
-                        <p class="text-xl text-gray-600">Accompagnement à vos rendez-vous médicaux en toute sécurité.</p>
+                <!-- Transport aéroport -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
+                <img src="/plaisirdaider/images/transportAeroport.webp" alt="Transport aéroport" class="w-full h-96 object-cover">
+                    <div class="p-6 bg-red-50">
+                        <h3 class="text-2xl font-semibold mb-3">Transport arrivée & départ</h3>
+                        <p class="text-xl text-gray-600">Accompagnement pour vos départs ou retours en gare ou aéroport.</p>
                     </div>
                 </div>
 
-                <!-- Courses & Shopping -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
-                    <img src="/plaisirdaider/images/courses.jpg" alt="Courses et shopping" class="w-full h-96 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-3">Courses & Shopping</h3>
-                        <p class="text-xl text-gray-600">Assistance pour vos courses et sorties shopping.</p>
+                <!-- Courses -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
+                    <img src="/plaisirdaider/images/course.webp" alt="Courses" class="w-full h-96 object-cover">
+                    <div class="p-6 bg-green-50">
+                        <h3 class="text-2xl font-semibold mb-3">Courses </h3>
+                        <p class="text-xl text-gray-600">Assistance pour vos courses.</p>
                     </div>
                 </div>
 
                 <!-- Transport loisirs -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
-                    <img src="/plaisirdaider/images/loisirs.jpg" alt="Transport loisirs" class="w-full h-96 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold mb-3">Sorties & Loisirs</h3>
-                        <p class="text-xl text-gray-600">Accompagnement pour vos activités de loisirs et visites.</p>
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
+                    <img src="/plaisirdaider/images/rdv-medical.webp" alt="un docteur et sa patiente" class="w-full h-96 object-cover">
+                    <div class="p-6 bg-blue-50">
+                        <h3 class="text-2xl font-semibold mb-3">Sorties diverses</h3>
+                        <p class="text-xl text-gray-600">Accompagnement pour quelconque sortie (rdv médical, salon de coiffure, etc...)</p>
                     </div>
                 </div>
             </div>

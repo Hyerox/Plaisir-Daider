@@ -9,7 +9,7 @@ CREATE TABLE users (
 
 INSERT INTO users (email, password)
 VALUES (
-    "plaisirdaidervar@hotmail.com",
+    "test@test.com",
     "Test1234"
 );
 
