@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "./config/config.php"
+require_once __DIR__ . "./config/config.php";
 $pageTitle = 'Accueil';
 require_once "./partials/header.php";
 ?>
@@ -7,7 +7,7 @@ require_once "./partials/header.php";
 <main class="min-h-screen bg-gradient-to-br from-[#f7f6f2] via-[#eef3e6] to-[#e1e9d4]">
     <!-- Section Hero -->
     <section class="relative h-[700px] z-0">
-        <img src="images/hero.webp" class="absolute inset-0 w-full h-full object-cover filter brightness-75" alt="Un jardin en fond"/>
+        <img src="<?= BASE_URL ?>images/hero.webp" class="absolute inset-0 w-full h-full object-cover filter brightness-75" alt="Un jardin en fond"/>
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
         <div class="relative container mx-auto px-4 h-full flex items-center justify-center">
             <div class="text-center space-y-8">
@@ -23,7 +23,7 @@ require_once "./partials/header.php";
                 </div>
 
                 <div class="bg-white/90 backdrop-blur-sm mx-auto w-72 rounded-3xl transform hover:scale-105 transition-transform duration-300">
-                    <img src="images/logo.webp" class="w-full h-auto mx-auto" alt="Logo Plaisir d'Aider" width="300" height="300"/>
+                    <img src="<?= BASE_URL ?>images/logo.webp" class="w-full h-auto mx-auto" alt="Logo Plaisir d'Aider" width="300" height="300"/>
                 </div>
 
                 <p class="text-2xl md:text-3xl mb-8 text-white font-medium drop-shadow-lg max-w-2xl mx-auto">
@@ -35,7 +35,7 @@ require_once "./partials/header.php";
                        class="bg-[#cce3c1] text-[#1a2819] px-8 py-4 rounded-lg font-bold hover:bg-[#b9d5aa] transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                         Découvrir nos prestations
                     </a>
-                    <a href="views/contact.php" 
+                    <a href="<?= BASE_URL ?>views/contact.php" 
                        class="bg-white text-[#1a2819] border border-[#a8bfa0] px-8 py-4 rounded-lg font-bold hover:bg-white transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                         Nous contacter
                     </a>
@@ -46,7 +46,7 @@ require_once "./partials/header.php";
 
     <!-- Section flottante pour le devis -->
     <div id="floating-cta" class="fixed bottom-8 right-8 transform translate-y-[200%] transition-transform duration-500 z-[999]">
-        <a href="views/contact.php" 
+        <a href="<?= BASE_URL ?>views/contact.php" 
            class="bg-orange-500 text-white px-6 py-4 rounded-full font-bold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
             <span>Demandez votre devis</span>
         </a>
@@ -95,17 +95,17 @@ require_once "./partials/header.php";
                 <div class="flex transition-transform duration-500 ease-in-out" id="slider">
                     <?php
                     $services = [
-                        ["menage", "images/menage.webp", "Ménage", "Entretien de votre maison"],
-                        ["jardinage", "images/jardinage.webp", "Jardinage", "Entretien de votre jardin"],
-                        ["bricolage", "images/bricolage.webp", "Bricolage", "Travaux de petit bricolage"],
-                        ["debarras", "images/debarras.webp", "Débarras", "Débarrassage de surplus"],
-                        ["transport", "images/transport.webp", "Transport", "Accompagnement et transport de personnes"]
+                        ["menage", "<?= BASE_URL ?>images/menage.webp", "Ménage", "Entretien de votre maison"],
+                        ["jardinage", "<?= BASE_URL ?>images/jardinage.webp", "Jardinage", "Entretien de votre jardin"],
+                        ["bricolage", "<?= BASE_URL ?>images/bricolage.webp", "Bricolage", "Travaux de petit bricolage"],
+                        ["debarras", "<?= BASE_URL ?>images/debarras.webp", "Débarras", "Débarrassage de surplus"],
+                        ["transport", "<?= BASE_URL ?>images/transport.webp", "Transport", "Accompagnement et transport de personnes"]
                     ];
                     foreach ($services as [$slug, $img, $title, $desc]) {
                         echo "<div class='w-full flex-shrink-0'>
                             <div class='bg-[#2f3e2d]/95 p-6 rounded-lg shadow-lg border-2 border-[#cde0c6] mx-4 overflow-hidden'>
                                 <div class='h-[700px] -mx-6 -mt-6 mb-4 relative'>
-                                    <a href='views/{$slug}.php' aria-label='Page {$title}'><img src='{$img}' class='w-full h-full object-cover object-bottom' alt='{$title}'/></a>
+                                    <a href='<?= BASE_URL ?>views/{$slug}.php' aria-label='Page {$title}'><img src='{$img}' class='w-full h-full object-cover object-bottom' alt='{$title}'/></a>
                                     <div class='absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#4e5e48] to-transparent opacity-50'></div>
                                 </div>
                                 <div class='relative z-10'>
@@ -141,4 +141,4 @@ require_once "./partials/header.php";
 </main>
 
 <?php require_once "./partials/footer.php"; ?>
-<script src="./src/main.js" defer></script>
+<script src="<?= BASE_URL ?>src/main.js" defer></script>
