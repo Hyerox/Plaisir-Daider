@@ -1,6 +1,7 @@
 <?php
+require_once dirname(__DIR__) . '/config/config.php';
 session_start();
-require_once '../models/User.php';
+require_once BASE_PATH . '/models/User.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
@@ -14,16 +15,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_email'] = $user['email'];
 
-        header('Location: ../index.php');
+        header('Location: ' . BASE_URL . 'index.php');
         exit;
     } else {
         // Erreur
         $error = 'Email ou mot de passe incorrect.';
-        header('Location: ../views/login.php?error=' . urlencode($error));
+        header('Location: ' . BASE_URL . 'views/login.php?error=' . urlencode($error));
         exit;
     }
 } else {
     // Rediriger si accès direct sans POST
-    header('Location: ../views/login.php');
+    header('Location: ' . BASE_URL . 'views/login.php');
     exit;
 }
