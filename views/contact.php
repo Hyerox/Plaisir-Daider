@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "./config/config.php"
 $pageTitle = 'Contact';
 require_once "../partials/header.php";
 ?>
@@ -12,7 +13,7 @@ require_once "../partials/header.php";
             </span>
         </h2>
         <div class="max-w-2xl mx-auto bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-[#cde0c6]">
-            <form action="../controllers/contactController.php" method="POST" class="space-y-6">
+            <form action="<?= BASE_URL ?>controllers/contactController.php" method="POST" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="nom" class="block text-[#2f3e2d] font-medium mb-2">Nom</label>

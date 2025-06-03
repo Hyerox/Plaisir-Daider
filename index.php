@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "./config/config.php"
 $pageTitle = 'Accueil';
 require_once "./partials/header.php";
 ?>

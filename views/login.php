@@ -8,12 +8,12 @@ require_once "../partials/header.php";
         <div class="max-w-md mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
             <div class="bg-orange-200 px-6 py-8">
                 <div class="text-center mb-4">
-                    <img src="/plaisirdaider/images/logo.webp" alt="Logo Plaisir d'Aider" class="w-32 mx-auto">
+                    <img src="<?= BASE_URL ?>images/logo.webp" alt="Logo Plaisir d'Aider" class="w-32 mx-auto">
                 </div>
                 <h2 class="text-2xl font-bold text-orange-900 text-center">Connexion</h2>
             </div>
             
-            <form class="px-6 py-8 space-y-6" action="../controllers/loginController.php" method="POST">
+            <form class="px-6 py-8 space-y-6" action="<?= BASE_URL ?>controllers/loginController.php" method="POST">
                 <div class="space-y-2">
                     <label for="email" class="text-sm font-medium text-orange-900">Email</label>
                     <input type="email" id="email" name="email" required 
