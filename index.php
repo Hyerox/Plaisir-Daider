@@ -105,14 +105,14 @@ require_once BASE_PATH . "/partials/header.php";
                     foreach ($services as [$slug, $img, $title, $desc]) {
                         echo "<div class='w-full flex-shrink-0'>
                             <div class='bg-[#2f3e2d]/95 p-6 rounded-lg shadow-lg border-2 border-[#cde0c6] mx-4 overflow-hidden'>
-                                <div class='h-[700px] -mx-6 -mt-6 mb-4 relative'>
-                                    <a href='./views/{$slug}.php' aria-label='Page {$title}'><img src='{$img}' class='w-full h-full object-cover object-bottom' alt='{$title}'/></a>
+                                <div class='h-[300px] md:h-[700px] -mx-6 -mt-6 mb-4 relative'>
+                                    <a href='./views/{$slug}.php' aria-label='Page {$title}'><img src='{$img}' class='w-full h-full object-cover' alt='{$title}'/></a>
                                     <div class='absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#4e5e48] to-transparent opacity-50'></div>
                                 </div>
                                 <div class='relative z-10'>
                                     <h3 class='text-2xl font-semibold mb-2 text-[#f5f5f5]'>{$title}</h3>
                                     <p class='text-[#f5f5f5]'>{$desc}</p>
-                                    <p class='text-[#f5f5f5] mt-2 italic'>Cliquez sur l'image pour plus d'informations ...</p>
+                                    <p class='text-[#f5f5f5] mt-2 mb-12 md:mb-2 italic'>Cliquez sur l'image pour plus d'informations ...</p>
                                 </div>
                             </div>
                         </div>";
@@ -129,17 +129,18 @@ require_once BASE_PATH . "/partials/header.php";
                 </button>
 
                 <!-- Indicateurs -->
-                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 mb-4" id="dots">
-                    <button class="w-3 h-3 p-3 rounded-full bg-[#cde0c6] transition-all" aria-label="Image 1"></button>
-                    <button class="w-3 h-3 p-3 rounded-full bg-[#cde0c6]/50 transition-all" aria-label="Image 2"></button>
-                    <button class="w-3 h-3 p-3 rounded-full bg-[#cde0c6]/50 transition-all" aria-label="Image 3"></button>
-                    <button class="w-3 h-3 p-3 rounded-full bg-[#cde0c6]/50 transition-all" aria-label="Image 4"></button>
-                    <button class="w-3 h-3 p-3 rounded-full bg-[#cde0c6]/50 transition-all" aria-label="Image 5"></button>
-                </div>
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2" id="dots">
+    <?php foreach ($services as $index => $_): ?>
+        <button class="w-3 h-3 rounded-full transition-all duration-300"
+                style="background-color: <?= $index === 0 ? '#cde0c6' : '#cde0c680' ?>;"
+                aria-label="Image <?= $index + 1 ?>"></button>
+    <?php endforeach; ?>
+</div>
+
             </div>
         </div>
     </section>
 </main>
 
 <?php require_once "./partials/footer.php"; ?>
-<script src="./src/main.js" defer></script>
+<script src="<?= BASE_URL ?>src/main.js" defer></script>
