@@ -59,5 +59,11 @@ class Database {
         }
         return self::$instance->pdo;
     }
+    
+    public static function getConnection() {
+        return self::getInstance();
+    }
+    
 }
-?>
+
+

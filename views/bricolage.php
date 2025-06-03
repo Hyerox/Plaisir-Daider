@@ -1,11 +1,12 @@
 <?php
+require_once dirname(__FILE__) . "/../config/config.php";
 $pageTitle = 'Bricolage';
-require_once "../partials/header.php";
+require_once BASE_PATH . "/partials/header.php";
 ?>
 
 <main>
     <section class="relative h-[700px] z-0">
-        <img src="/plaisirdaider/images/bricolage_hero.webp" class="absolute inset-0 w-full h-full object-cover filter brightness-90" alt="Un homme avec des gants de bricolage"/>
+        <img src="<?= BASE_URL ?>images/bricolage_hero.webp" class="absolute inset-0 w-full h-full object-cover filter brightness-90" alt="Un homme avec des gants de bricolage"/>
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
         <div class="relative container mx-auto px-4 h-full flex items-center justify-center">
             <div class="text-center space-y-8">
@@ -26,7 +27,7 @@ require_once "../partials/header.php";
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Montage de meubles -->
                 <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
-                    <img src="/plaisirdaider/images/meuble.webp" alt="Montage de meubles" class="w-full h-96 object-cover">
+                    <img src="<?= BASE_URL ?>images/meuble.webp" alt="Montage de meubles" class="w-full h-96 object-cover">
                     <div class="p-6 bg-red-50">
                         <h3 class="text-2xl font-semibold mb-3">Montage de meubles</h3>
                         <p class="text-xl text-gray-600">Assemblage et installation de vos meubles en kit.</p>
@@ -35,7 +36,7 @@ require_once "../partials/header.php";
 
                 <!-- Petites réparations -->
                 <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
-                    <img src="/plaisirdaider/images/reparation.webp" alt="Réparations" class="w-full h-96 object-cover">
+                    <img src="<?= BASE_URL ?>images/reparation.webp" alt="Réparations" class="w-full h-96 object-cover">
                     <div class="p-6 bg-green-50">
                         <h3 class="text-2xl font-semibold mb-3">Petites réparations</h3>
                         <p class="text-xl text-gray-600">Réparations diverses et travaux de maintenance.</p>
@@ -44,7 +45,7 @@ require_once "../partials/header.php";
 
                 <!-- Fixations murales -->
                 <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
-                    <img src="/plaisirdaider/images/fixation.webp" alt="Un homme prend des mesures sur un mur" class="w-full h-96 object-cover">
+                    <img src="<?= BASE_URL ?>images/fixation.webp" alt="Un homme prend des mesures sur un mur" class="w-full h-96 object-cover">
                     <div class="p-6 bg-blue-50">
                         <h3 class="text-2xl font-semibold mb-3">Fixations murales</h3>
                         <p class="text-xl text-gray-600">Installation d'étagères, tableaux et autres éléments muraux.</p>
@@ -53,7 +54,7 @@ require_once "../partials/header.php";
 
 
                 <div class="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 cursor-pointer">
-                    <img src="/plaisirdaider/images/peinture.webp" alt="Une personne peint" class="w-full h-96 object-cover">
+                    <img src="<?= BASE_URL ?>images/peinture.webp" alt="Une personne peint" class="w-full h-96 object-cover">
                     <div class="p-6 bg-yellow-50">
                         <h3 class="text-2xl font-semibold mb-3">Peinture</h3>
                         <p class="text-xl text-gray-600">Pour un renouveau de vos murs ou meubles</p>
@@ -65,5 +66,5 @@ require_once "../partials/header.php";
 </main>
 
 <?php
-require_once "../partials/footer.php";
+require_once BASE_PATH . "/partials/footer.php";
 ?>

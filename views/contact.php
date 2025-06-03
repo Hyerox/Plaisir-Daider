@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . "./config/config.php"
+require_once dirname(__FILE__) . '/../config/config.php';
 $pageTitle = 'Contact';
-require_once "../partials/header.php";
+require_once BASE_PATH . "/partials/header.php";
 ?>
 <!-- Section Contact -->
 <section id="contact" class="py-16 bg-gradient-to-br from-[#f7f6f2] via-[#eef3e6] to-[#e1e9d4]">
@@ -61,5 +61,5 @@ require_once "../partials/header.php";
 </section>
 
 <?php
-require_once "../partials/footer.php";
+require_once BASE_PATH . "/partials/footer.php";
 ?>

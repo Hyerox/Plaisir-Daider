@@ -1,12 +1,13 @@
 <?php
+require_once dirname(__FILE__) . "/../config/config.php";
 $pageTitle = 'Aide Financière';
-require_once "../partials/header.php";
+require_once BASE_PATH . "/partials/header.php";
 ?>
 
 <main class="min-h-screen bg-gradient-to-br from-[#f7f6f2] via-[#eef3e6] to-[#e1e9d4]">
     <!-- Hero Section -->
     <section class="relative h-[600px] z-0">
-        <img src="../images/aide-financiere.webp" class="absolute inset-0 w-full h-full object-cover filter brightness-75" alt="Background"/>
+        <img src="<?= BASE_URL ?>images/aide-financiere.webp" class="absolute inset-0 w-full h-full object-cover filter brightness-75" alt="Background"/>
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
         <div class="relative container mx-auto px-4 h-full flex items-center justify-center">
             <h1 class="text-4xl md:text-5xl font-bold text-white text-center">Aides Financières</h1>
@@ -35,7 +36,7 @@ require_once "../partials/header.php";
                     </p>
                     <div class="flex gap-4">
                         <a href="https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/perte-d-autonomie-evaluation-et-droits/l-allocation-personnalisee-d-autonomie-apa" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">Informations sur l'APA →</a>
-                        <a href="../views/contact.php" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">Nous contacter →</a>
+                        <a href="<?= BASE_URL ?>views/contact.php" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">Nous contacter →</a>
                     </div>
                 </div>
 
@@ -73,7 +74,7 @@ require_once "../partials/header.php";
                     </p>
                     <div class="flex gap-4">
                         <a href="https://www.lassuranceretraite.fr/portail-info/files/live/sites/pub/files/PDF/demande-aides-autonomie-domicile-personnes-agees.pdf" target="_blank" class="text-[#375634] underline hover:text-[#2f3e2d] font-medium">En savoir plus →</a>
-                        <a href="../views/contact.php" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">Nous contacter →</a>
+                        <a href="<?= BASE_URL ?>views/contact.php" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">Nous contacter →</a>
                     </div>
                 </div>
             </div>
@@ -81,4 +82,4 @@ require_once "../partials/header.php";
     </section>
 </main>
 
-<?php require_once "../partials/footer.php"; ?>
+<?php require_once BASE_PATH . "/partials/footer.php"; ?>

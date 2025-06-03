@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../db.php';
 
+
 class Contact {
     public static function ajouter($nom, $prenom, $email, $telephone, $message) {
         $pdo = Database::getConnection();
@@ -15,4 +16,9 @@ class Contact {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function delete($id) {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare("DELETE FROM contact WHERE id = ?");
+        return $stmt->execute([$id]);
+    }
 }

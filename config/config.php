@@ -1,12 +1,9 @@
 <?php
-// config.php
+$isProduction = isset($_SERVER['RENDER']) || strpos($_SERVER['HTTP_HOST'], 'onrender.com') !== false;
 
-// Chemin absolu vers la racine du site
-define('BASE_PATH', __DIR__);
+$baseUrl = $isProduction
+    ? 'https://plaisir-daider.onrender.com'
+    : 'http://localhost:8080/PlaisirDaider'; 
 
-// URL dynamique en fonction de l'environnement
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$host = $_SERVER['HTTP_HOST'];
-$baseDir = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__DIR__)); // ex: /plaisirdaider si nécessaire
-define('BASE_URL', $protocol . '://' . $host . '/'); // ou avec $baseDir si sous-dossier
-?>
+define('BASE_URL', rtrim($baseUrl, '/') . '/');
+define('BASE_PATH', dirname(__DIR__));

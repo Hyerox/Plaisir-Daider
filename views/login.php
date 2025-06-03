@@ -1,6 +1,7 @@
 <?php
+require_once dirname(__FILE__) . "/../config/config.php";
 $pageTitle = 'Connexion';
-require_once "../partials/header.php";
+require_once BASE_PATH . "/partials/header.php";
 ?>
 
 <main class="min-h-screen bg-orange-50">
@@ -52,4 +53,4 @@ require_once "../partials/header.php";
     </div>
 </main>
 
-<?php require_once "../partials/footer.php"; ?>
+<?php require_once BASE_PATH . "/partials/footer.php"; ?>

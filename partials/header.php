@@ -21,7 +21,7 @@ session_start();
             <div class="flex justify-center">
                 <div class="p-8">
                     <div class="hidden md:flex items-center space-x-10">
-                        <a href="<?= BASE_URL ?>" class="text-lg text-[#4e5e48] hover:text-[#2f3e2d] transition duration-300 px-4 py-3 hover:bg-[#cde0c6]/30 hover:rounded-xl">Accueil</a>
+                        <a href="/plaisirdaider/index.php" class="text-lg text-[#4e5e48] hover:text-[#2f3e2d] transition duration-300 px-4 py-3 hover:bg-[#cde0c6]/30 hover:rounded-xl">Accueil</a>
                         
                         <!-- Prestations avec dropdown -->
                         <div class="relative group">
@@ -48,7 +48,7 @@ session_start();
                         <?php endif; ?>
 
                         <?php if(isset($_SESSION['user_id'])): ?>
-                        <a href="<?= BASE_URL ?>views/logout.php" class="text-[#2f3e2d] bg-red-100 px-4 rounded-lg hover:bg-red-200 transition duration-300 py-2 border-2 border-red-200">Déconnexion</a>
+                        <a href="<?= BASE_URL ?>controllers/logout.php" class="text-[#2f3e2d] bg-red-100 px-4 rounded-lg hover:bg-red-200 transition duration-300 py-2 border-2 border-red-200">Déconnexion</a>
                         <?php endif; ?>
                     </div>
             </div>
