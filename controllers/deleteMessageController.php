@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/config/config.php';
-require_once BASE_PATH . '/models/Contact.php';
+require_once BASE_PATH . '/models/contact.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);

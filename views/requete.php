@@ -13,6 +13,10 @@ $contacts = Contact::getAll();
             <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">Message supprimé avec succès!</div>
         <?php elseif (isset($_GET['delete_error'])): ?>
             <div class="mb-4 p-4 bg-red-100 text-red-700 rounded-lg">Erreur lors de la suppression du message.</div>
+        <?php elseif (isset($_GET['update_success'])): ?>
+            <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">Message mis à jour avec succès!</div>
+        <?php elseif (isset($_GET['update_error'])): ?>
+            <div class="mb-4 p-4 bg-red-100 text-red-700 rounded-lg">Erreur lors de la mise à jour du message.</div>
         <?php endif; ?>
 
         <h2 class="text-4xl font-bold text-center mb-8 text-[#2f3e2d] tracking-tight">
@@ -41,15 +45,34 @@ $contacts = Contact::getAll();
                             <td class="px-6 py-4 text-gray-700"><?= htmlspecialchars($contact['prenom']) ?></td>
                             <td class="px-6 py-4 text-gray-700"><?= htmlspecialchars($contact['email']) ?></td>
                             <td class="px-6 py-4 text-gray-700"><?= htmlspecialchars($contact['telephone']) ?></td>
-                            <td class="px-6 py-4 text-gray-700 max-w-md truncate"><?= nl2br(htmlspecialchars($contact['message'])) ?></td>
+                            <td class="px-6 py-4 text-gray-700">
+                                <div class="relative">
+                                    <div class="message-content <?= strlen($contact['message']) > 100 ? 'truncate' : '' ?>">
+                                        <?= nl2br(htmlspecialchars($contact['message'])) ?>
+                                    </div>
+                                    <?php if (strlen($contact['message']) > 100): ?>
+                                        <button onclick="toggleMessage(this)" class="text-blue-600 hover:text-blue-800 text-sm mt-1" data-expanded="false">
+                                            Voir plus
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+                            </td>
                             <td class="px-6 py-4 text-gray-700"><?= date('d/m/Y H:i', strtotime($contact['created_at'])) ?></td>
                             <td class="px-6 py-4">
-                                <form action="<?= BASE_URL ?>controllers/deleteMessageController.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">
-                                    <input type="hidden" name="id" value="<?= $contact['id'] ?>">
-                                    <button type="submit" class="text-red-600 hover:text-red-800">
-                                        Supprimer
+                                <div class="flex gap-4">
+                                    <button onclick="openEditModal(<?= htmlspecialchars(json_encode($contact)) ?>)" 
+                                            class="text-blue-600 hover:text-blue-800">
+                                        Modifier
                                     </button>
-                                </form>
+                                    <form action="<?= BASE_URL ?>controllers/deleteMessageController.php" method="POST" 
+                                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');" 
+                                          class="inline">
+                                        <input type="hidden" name="id" value="<?= $contact['id'] ?>">
+                                        <button type="submit" class="text-red-600 hover:text-red-800">
+                                            Supprimer
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -58,5 +81,83 @@ $contacts = Contact::getAll();
         </div>
     </div>
 </section>
+
+<!-- Modal d'édition -->
+<div id="editModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center">
+    <div class="relative mx-auto p-8 border w-full max-w-md shadow-lg rounded-md bg-white">
+        <div class="absolute top-3 right-3">
+            <button onclick="closeEditModal()" class="text-gray-500 hover:text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mb-6">Modifier le message</h3>
+        <form id="editForm" action="<?= BASE_URL ?>controllers/updateMessageController.php" method="POST">
+            <input type="hidden" id="edit_id" name="id">
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="edit_nom">Nom</label>
+                    <input type="text" id="edit_nom" name="nom" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="edit_prenom">Prénom</label>
+                    <input type="text" id="edit_prenom" name="prenom" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="edit_email">Email</label>
+                    <input type="email" id="edit_email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="edit_telephone">Téléphone</label>
+                    <input type="text" id="edit_telephone" name="telephone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="edit_message">Message</label>
+                    <textarea id="edit_message" name="message" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" rows="4"></textarea>
+                </div>
+                <div class="flex justify-end space-x-4 mt-6">
+                    <button type="button" onclick="closeEditModal()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                        Annuler
+                    </button>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Enregistrer
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function openEditModal(contact) {
+    document.getElementById('editModal').classList.remove('hidden');
+    document.getElementById('edit_id').value = contact.id;
+    document.getElementById('edit_nom').value = contact.nom;
+    document.getElementById('edit_prenom').value = contact.prenom;
+    document.getElementById('edit_email').value = contact.email;
+    document.getElementById('edit_telephone').value = contact.telephone;
+    document.getElementById('edit_message').value = contact.message;
+}
+
+function closeEditModal() {
+    document.getElementById('editModal').classList.add('hidden');
+}
+
+function toggleMessage(button) {
+    const messageDiv = button.previousElementSibling;
+    const isExpanded = button.getAttribute('data-expanded') === 'true';
+    
+    if (isExpanded) {
+        messageDiv.classList.add('truncate');
+        button.textContent = 'Voir plus';
+        button.setAttribute('data-expanded', 'false');
+    } else {
+        messageDiv.classList.remove('truncate');
+        button.textContent = 'Voir moins';
+        button.setAttribute('data-expanded', 'true');
+    }
+}
+</script>
 
 <?php require_once BASE_PATH . "/partials/footer.php"; ?>

@@ -21,7 +21,7 @@ session_start();
         <nav class="bg-gradient-to-r from-[#f7f6f2] via-[#eef3e6] to-[#f7f6f2] shadow-lg border-b-2 border-[#cde0c6] relative z-50">
             <div class="container mx-auto flex justify-center items-center px-4">
                 <!-- Burger Menu Button - visible only on mobile -->
-                <button id="burger-menu" class="md:hidden absolute left-4 p-2">
+                <button id="burger-menu" class="md:hidden absolute left-4 p-2" aria-label="Menu de navigation">
                     <svg class="w-6 h-6 text-[#4e5e48]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -39,10 +39,13 @@ session_start();
                     <div class="flex flex-col items-center space-y-4 p-4">
                         <a href="<?= BASE_URL ?>index.php" class="text-lg text-[#4e5e48] hover:text-[#2f3e2d] w-full text-center py-3 hover:bg-[#cde0c6]/30">Accueil</a>
                         <div class="w-full">
-                            <button id="mobile-dropdown" class="text-lg text-[#4e5e48] hover:text-[#2f3e2d] w-full text-center py-3 hover:bg-[#cde0c6]/30">
+                            <button id="mobile-dropdown" class="flex items-center justify-center text-lg text-[#4e5e48] hover:text-[#2f3e2d] w-full text-center py-3 hover:bg-[#cde0c6]/30">
                                 Nos Prestations
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
                             </button>
-                            <div id="mobile-dropdown-content" class="hidden bg-[#eef3e6] w-full">
+                            <div id="mobile-dropdown-content" class="hidden bg-[#eef3e6] w-full border-t border-b border-[#cde0c6]">
                                 <a href="<?= BASE_URL ?>views/menage.php" class="block py-3 text-[#4e5e48] hover:bg-[#cde0c6]/30 text-center">Ménage</a>
                                 <a href="<?= BASE_URL ?>views/jardinage.php" class="block py-3 text-[#4e5e48] hover:bg-[#cde0c6]/30 text-center">Jardinage</a>
                                 <a href="<?= BASE_URL ?>views/bricolage.php" class="block py-3 text-[#4e5e48] hover:bg-[#cde0c6]/30 text-center">Bricolage</a>
@@ -106,5 +109,3 @@ session_start();
             </div>
         </div>
     </header>
-</body>
-</html>

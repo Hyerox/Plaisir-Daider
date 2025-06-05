@@ -21,4 +21,10 @@ class Contact {
         $stmt = $pdo->prepare("DELETE FROM contact WHERE id = ?");
         return $stmt->execute([$id]);
     }
+
+    public static function update($id, $nom, $prenom, $email, $telephone, $message) {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare("UPDATE contact SET nom = ?, prenom = ?, email = ?, telephone = ?, message = ? WHERE id = ?");
+        return $stmt->execute([$nom, $prenom, $email, $telephone, $message, $id]);
+    }
 }

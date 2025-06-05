@@ -25,7 +25,7 @@ require_once BASE_PATH . "/partials/header.php";
                         Nos différentes prestations vous permettent de bénéficier d'un crédit d'impôt égal à 50% des dépenses 
                         que vous avez engagées dans l'année (art. 199 sexdecies du CGI).
                     </p>
-                    <a href="https://www.impots.gouv.fr/particulier/emploi-domicile" target="_blank"  class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">Plus d'informations →</a>
+                    <a href="https://www.impots.gouv.fr/particulier/emploi-domicile" target="_blank"  class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">En savoir plus →</a>
                 </div>
 
                 <!-- APA -->
@@ -35,7 +35,7 @@ require_once BASE_PATH . "/partials/header.php";
                         Elle est attribuée aux personnes âgées de plus de 60 ans dépendantes (classées dans les catégories 1 à 4 de la grille AGGIR).
                     </p>
                     <div class="flex gap-4">
-                        <a href="https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/perte-d-autonomie-evaluation-et-droits/l-allocation-personnalisee-d-autonomie-apa" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">Informations sur l'APA →</a>
+                        <a href="https://www.pour-les-personnes-agees.gouv.fr/preserver-son-autonomie/perte-d-autonomie-evaluation-et-droits/l-allocation-personnalisee-d-autonomie-apa" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">En savoir plus →</a>
                         <a href="<?= BASE_URL ?>views/contact.php" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">Nous contacter →</a>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ require_once BASE_PATH . "/partials/header.php";
                         La participation horaire du bénéficiaire est déterminée selon le barème de ressources adopté 
                         chaque année par la Caisse Nationale d'Assurance Vieillesse (CNAV). Pour l'année 2025, elle est de 11.88€/heure.
                     </p>
-                    <a href="https://legislation.lassuranceretraite.fr/Pdf/circulaire_cnav_2025_08_05032025.pdf" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">Plus de détails →</a>
+                    <a href="https://legislation.lassuranceretraite.fr/Pdf/circulaire_cnav_2025_08_05032025.pdf" target="_blank" class="text-[#375634] hover:text-[#2f3e2d] underline font-medium">En savoir plus →</a>
                 </div>
 
                 <!-- Garde à domicile momentanée -->

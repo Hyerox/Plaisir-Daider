@@ -1,113 +1,96 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu functionality
+    // Menu burger toggle
     const burgerMenu = document.getElementById('burger-menu');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeMenu = document.getElementById('close-menu');
+
+    burgerMenu?.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+    });
+
+    closeMenu?.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+    });
+
+    // Prestations dropdown toggle
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileDropdownContent = document.getElementById('mobile-dropdown-content');
 
-    if (burgerMenu && mobileMenu && closeMenu) {
-        burgerMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
-
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        });
-
-        mobileDropdown.addEventListener('click', () => {
-            mobileDropdownContent.classList.toggle('hidden');
-        });
-    }
+    mobileDropdown?.addEventListener('click', () => {
+        mobileDropdownContent.classList.toggle('hidden');
+        // Ajouter une classe active pour indiquer visuellement l'état
+        mobileDropdown.classList.toggle('bg-[#cde0c6]/30');
+    });
 
     const slider = document.getElementById('slider');
-    const slides = slider.children;
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dots = Array.from(document.getElementById('dots').children);
-    let currentSlide = 0;
-    let slideWidth = slides[0].offsetWidth;
-    let autoplayInterval;
+    if (slider) {
+        // Si #slider existe, on peut récupérer les enfants sans planter
+        const slides = slider.children;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsElement = document.getElementById('dots');
+        const dots = dotsElement ? Array.from(dotsElement.children) : [];
 
-    window.addEventListener('resize', () => {
-        slideWidth = slides[0].offsetWidth;
-        goToSlide(currentSlide);
-    });
+        let currentSlide = 0;
+        let autoplayInterval;
 
-    function goToSlide(index) {
-        if (index < 0) index = slides.length - 1;
-        if (index >= slides.length) index = 0;
-        currentSlide = index;
-        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-        dots.forEach((dot, i) => {
-            if (i === currentSlide) {
-                dot.style.backgroundColor = '#cde0c6';
-            } else {
-                dot.style.backgroundColor = '#cde0c680';
-            }
-        });
-    }
-
-    function startAutoplay() {
-        stopAutoplay();
-        autoplayInterval = setInterval(() => {
-            goToSlide(currentSlide + 1);
-        }, 5000);
-    }
-
-    function stopAutoplay() {
-        if (autoplayInterval) {
-            clearInterval(autoplayInterval);
+        function goToSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.style.backgroundColor = (i === currentSlide) ? '#cde0c6' : '#cde0c680';
+            });
         }
-    }
 
-    prevBtn.addEventListener('click', () => {
-        goToSlide(currentSlide - 1);
-        stopAutoplay();
-        startAutoplay();
-    });
+        function startAutoplay() {
+            clearInterval(autoplayInterval);
+            autoplayInterval = setInterval(() => {
+                goToSlide(currentSlide + 1);
+            }, 5000);
+        }
 
-    nextBtn.addEventListener('click', () => {
-        goToSlide(currentSlide + 1);
-        stopAutoplay();
-        startAutoplay();
-    });
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            goToSlide(index);
-            stopAutoplay();
+        prevBtn?.addEventListener('click', () => {
+            goToSlide(currentSlide - 1);
             startAutoplay();
         });
-    });
 
-    let touchStartX = 0;
-    let touchEndX = 0;
+        nextBtn?.addEventListener('click', () => {
+            goToSlide(currentSlide + 1);
+            startAutoplay();
+        });
 
-    slider.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
-        stopAutoplay();
-    }, false);
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                goToSlide(idx);
+                startAutoplay();
+            });
+        });
 
-    slider.addEventListener('touchmove', e => {
-        touchEndX = e.touches[0].clientX;
-    }, false);
-
-    slider.addEventListener('touchend', () => {
-        const diffX = touchStartX - touchEndX;
-        if (Math.abs(diffX) > 50) {
-            if (diffX > 0) {
-                goToSlide(currentSlide + 1);
-            } else {
-                goToSlide(currentSlide - 1);
+        // Swipe tactile sur mobile
+        let touchStartX = 0, touchEndX = 0;
+        slider.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            clearInterval(autoplayInterval);
+        }, false);
+        slider.addEventListener('touchmove', e => {
+            touchEndX = e.touches[0].clientX;
+        }, false);
+        slider.addEventListener('touchend', () => {
+            const diffX = touchStartX - touchEndX;
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) goToSlide(currentSlide + 1);
+                else goToSlide(currentSlide - 1);
             }
-        }
-        startAutoplay();
-    }, false);
+            startAutoplay();
+        }, false);
 
-    startAutoplay();
+        // Lancer le carrousel au démarrage
+        goToSlide(0);
+        startAutoplay();
+    }
+
 
     const floatingCta = document.getElementById('floating-cta');
     const aProposSection = document.getElementById('aPropos');

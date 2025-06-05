@@ -28,11 +28,6 @@ require_once BASE_PATH . "/partials/header.php";
                 </div>
 
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input type="checkbox" id="remember" name="remember" 
-                               class="h-4 w-4 text-orange-500 border-orange-200 rounded focus:ring-orange-400">
-                        <label for="remember" class="ml-2 text-sm text-orange-900">Se souvenir de moi</label>
-                    </div>
                     <a href="mailto:didiernathan00@gmail.com" class="text-sm text-orange-600 hover:text-orange-800">
                         Mot de passe oublié?
                     </a>

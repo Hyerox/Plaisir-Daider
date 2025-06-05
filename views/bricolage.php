@@ -57,7 +57,7 @@ require_once BASE_PATH . "/partials/header.php";
                     <img src="<?= BASE_URL ?>images/peinture.webp" alt="Une personne peint" class="w-full h-96 object-cover">
                     <div class="p-6 bg-yellow-50">
                         <h3 class="text-2xl font-semibold mb-3">Peinture</h3>
-                        <p class="text-xl text-gray-600">Pour un renouveau de vos murs ou meubles</p>
+                        <p class="text-xl text-gray-600">Pour un renouveau de vos murs ou meubles.</p>
                     </div>
                 </div>
             </div>

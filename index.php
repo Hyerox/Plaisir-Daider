@@ -62,12 +62,14 @@ require_once BASE_PATH . "/partials/header.php";
                 </span>
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="bg-gradient-to-br from-white to-[#eef3e6] p-8 rounded-lg shadow-lg border border-gray-200">
+                <div class="bg-gradient-to-br from-white to-[#eef3e6] p-8 rounded-lg shadow-lg border border-gray-200 mt-14">
                     <p class="text-[#1a2819] text-lg leading-relaxed mb-6">
-                        Depuis plus de 18 ans, Plaisir d’Aider simplifie le quotidien de ses clients en leur offrant un environnement propre, fonctionnel et serein. Grâce à une présence fiable et une écoute attentive, nous contribuons à améliorer durablement leur confort de vie et leur tranquillité d’esprit.
+                    Depuis plus de 18 ans, Plaisir d’Aider accompagne les particuliers dans leur quotidien à travers des services à la personne de qualité, humains et accessibles. Implantés à Rocbaron dans le Var, nous proposons des prestations personnalisées en ménage, jardinage, petit bricolage, transport et débarras.<br /><br />Notre mission : faciliter la vie de nos clients avec bienveillance, professionnalisme et discrétion, tout en leur faisant bénéficier de 50 % de crédit d’impôt sur l’ensemble de nos interventions. Nous plaçons la relation de confiance au cœur de nos engagements.
+
+
                     </p>
                     <p class="text-[#1a2819] text-lg leading-relaxed mb-8">
-                        Notre zone d'activité s'étend sur tout le territoire local. Pour découvrir nos différentes prestations, 
+                        Notre zone d'activité s'étend sur tout le territoire local. Pour découvrir nos différentes prestations en détail, 
                         consultez notre rubrique <a href="#prestations" class="text-blue-700 hover:text-blue-800 underline font-medium">Nos prestations</a>.
                     </p>
                 </div>
@@ -143,4 +145,4 @@ require_once BASE_PATH . "/partials/header.php";
 </main>
 
 <?php require_once "./partials/footer.php"; ?>
-<script src="<?= BASE_URL ?>src/main.js" defer></script>
+

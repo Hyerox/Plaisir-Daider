@@ -16,7 +16,7 @@
             <ul class="space-y-1 text-base">
                 <li>Lundi - Samedi : 8h - 18h</li>
                 <li>Dimanche : Fermé</li>
-                <li class="italic mt-4 text-base">Horaire aménageable. Sur rendez-vous uniquement</li>
+                <li class="italic mt-4 text-base">Horaires aménageables. Sur rendez-vous uniquement</li>
             </ul>
         </div>
 
@@ -32,8 +32,10 @@
         </div>
     </div>
 
-    <div class="mt-8 border-t border-green-300 pt-4 text-center text-base px-4">
+    <div class="mt-8 border-t border-gray-300 pt-4 text-center text-base px-4">
         <p class="mb-4">Afin d'éviter des problèmes de droits, la plupart des photos sur ce site ont été générées par l'intelligence artificielle.</p>
         &copy; <?= date('Y') ?> Plaisir d'Aider. Tous droits réservés.
     </div>
 </footer>
+</body>
+</html>
