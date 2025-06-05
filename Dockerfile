@@ -7,6 +7,9 @@ COPY . /var/www/html/
 # Active le module de réécriture (utile pour .htaccess)
 RUN a2enmod rewrite
 
+# Installer le driver PDO MySQL
+RUN docker-php-ext-install pdo_mysql
+
 # Donne les bons droits
 RUN chown -R www-data:www-data /var/www/html
 
