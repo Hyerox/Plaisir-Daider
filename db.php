@@ -5,11 +5,17 @@ class Database {
 
     private function __construct() {
         $envFile = __DIR__ . '/.env';
-        if (!file_exists($envFile)) {
-            throw new Exception('Le fichier .env est manquant');
+
+        if (file_exists($envFile)) {
+            $this->loadEnvFile($envFile); // En local
         }
 
-        $this->loadEnvFile($envFile);
+        // Ensuite : que ce soit local ou Render, on lit depuis $_ENV ou getenv
+        $this->HOST     = $_ENV['HOST']     ?? getenv('HOST');
+        $this->DBNAME   = $_ENV['DBNAME']   ?? getenv('DBNAME');
+        $this->USERNAME = $_ENV['USERNAME'] ?? getenv('USERNAME');
+        $this->PASSWORD = $_ENV['PASSWORD'] ?? getenv('PASSWORD');
+        
         $this->validateEnvVariables();
         $this->connect();
     }
@@ -28,11 +34,12 @@ class Database {
     private function validateEnvVariables() {
         $required = ['HOST', 'DBNAME', 'USERNAME', 'PASSWORD'];
         foreach ($required as $var) {
-            if (empty($_ENV[$var])) {
+            if (empty($this->$var)) {
                 throw new Exception("Variable d'environnement '$var' manquante");
             }
         }
     }
+    
 
     private function connect() {
         try {
