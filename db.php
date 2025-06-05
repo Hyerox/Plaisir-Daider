@@ -5,17 +5,22 @@ class Database {
 
     private function __construct() {
         $envFile = __DIR__ . '/.env';
-
+    
+        // Environnement local : on charge le .env s'il est présent
         if (file_exists($envFile)) {
-            $this->loadEnvFile($envFile); // En local
+            $this->loadEnvFile($envFile);
+            $this->HOST     = $_ENV['HOST']     ?? null;
+            $this->DBNAME   = $_ENV['DBNAME']   ?? null;
+            $this->USERNAME = $_ENV['USERNAME'] ?? null;
+            $this->PASSWORD = $_ENV['PASSWORD'] ?? null;
+        } else {
+            // Environnement production : Render injecte les variables dans getenv()
+            $this->HOST     = getenv('HOST');
+            $this->DBNAME   = getenv('DBNAME');
+            $this->USERNAME = getenv('USERNAME');
+            $this->PASSWORD = getenv('PASSWORD');
         }
-
-        // Ensuite : que ce soit local ou Render, on lit depuis $_ENV ou getenv
-        $this->HOST     = $_ENV['HOST']     ?? getenv('HOST');
-        $this->DBNAME   = $_ENV['DBNAME']   ?? getenv('DBNAME');
-        $this->USERNAME = $_ENV['USERNAME'] ?? getenv('USERNAME');
-        $this->PASSWORD = $_ENV['PASSWORD'] ?? getenv('PASSWORD');
-        
+    
         $this->validateEnvVariables();
         $this->connect();
     }
@@ -32,13 +37,11 @@ class Database {
     }
 
     private function validateEnvVariables() {
-        $required = ['HOST', 'DBNAME', 'USERNAME', 'PASSWORD'];
-        foreach ($required as $var) {
-            if (empty($this->$var)) {
-                throw new Exception("Variable d'environnement '$var' manquante");
-            }
+        if (!$this->HOST || !$this->DBNAME || !$this->USERNAME) {
+            throw new Exception('Une ou plusieurs variables d’environnement sont manquantes.');
         }
     }
+    
     
 
     private function connect() {
