@@ -2,16 +2,19 @@
 class Database {
     private static $instance = null;
     private $pdo;
+    private $HOST;
+    private $DBNAME;
+    private $USERNAME;
+    private $PASSWORD;
 
     private function __construct() {
         $envFile = __DIR__ . '/.env';
 
-        // Si on est en local (fichier .env présent), on le charge
         if (file_exists($envFile)) {
             $this->loadEnvFile($envFile);
         }
 
-        // On récupère les valeurs soit dans $_ENV (après loadEnvFile), soit via getenv (Render/production)
+        // Récupère la variable d'environnement (priorité à getenv, fallback sur $_ENV)
         $this->HOST     = getenv('HOST')     ?: ($_ENV['HOST'] ?? null);
         $this->DBNAME   = getenv('DBNAME')   ?: ($_ENV['DBNAME'] ?? null);
         $this->USERNAME = getenv('USERNAME') ?: ($_ENV['USERNAME'] ?? null);
