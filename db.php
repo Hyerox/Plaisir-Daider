@@ -45,6 +45,11 @@ class Database {
     }
 
     private function connect() {
+        error_log('HOST=' . $this->HOST);
+        error_log('DBNAME=' . $this->DBNAME);
+        error_log('USERNAME=' . $this->USERNAME);
+        error_log('PASSWORD=' . $this->PASSWORD);
+
         try {
             $dsn = sprintf(
                 "mysql:host=%s;dbname=%s;charset=utf8mb4",
@@ -58,8 +63,9 @@ class Database {
             ]);
         } catch (PDOException $e) {
             error_log("Erreur de connexion BDD : " . $e->getMessage());
-            throw new Exception('Erreur de connexion à la base de données');
+            throw new Exception('Erreur de connexion à la base de données : ' . $e->getMessage());
         }
+        
     }
 
     public static function getInstance() {
