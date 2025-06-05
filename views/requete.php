@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/../config/config.php'; 
 $pageTitle = 'Requêtes';
-require_once BASE_PATH . "/models/Contact.php";
+require_once BASE_PATH . "/models/contact.php";
 require_once BASE_PATH . "/partials/header.php";
 
 $contacts = Contact::getAll();
