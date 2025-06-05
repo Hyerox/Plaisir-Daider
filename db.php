@@ -3,29 +3,19 @@ class Database {
     private static $instance = null;
     private $pdo;
 
-    // Déclaration des propriétés pour éviter les erreurs avec PHP 8.2+
-    private $HOST;
-    private $DBNAME;
-    private $USERNAME;
-    private $PASSWORD;
-
     private function __construct() {
         $envFile = __DIR__ . '/.env';
 
-        // Si le fichier .env existe (en local), on le charge
+        // Si on est en local (fichier .env présent), on le charge
         if (file_exists($envFile)) {
             $this->loadEnvFile($envFile);
-            $this->HOST     = $_ENV['HOST']     ?? null;
-            $this->DBNAME   = $_ENV['DBNAME']   ?? null;
-            $this->USERNAME = $_ENV['USERNAME'] ?? null;
-            $this->PASSWORD = $_ENV['PASSWORD'] ?? null;
-        } else {
-            // Sinon, on suppose qu'on est sur Render et on utilise getenv()
-            $this->HOST     = getenv('HOST');
-            $this->DBNAME   = getenv('DBNAME');
-            $this->USERNAME = getenv('USERNAME');
-            $this->PASSWORD = getenv('PASSWORD');
         }
+
+        // On récupère les valeurs soit dans $_ENV (après loadEnvFile), soit via getenv (Render/production)
+        $this->HOST     = getenv('HOST')     ?: ($_ENV['HOST'] ?? null);
+        $this->DBNAME   = getenv('DBNAME')   ?: ($_ENV['DBNAME'] ?? null);
+        $this->USERNAME = getenv('USERNAME') ?: ($_ENV['USERNAME'] ?? null);
+        $this->PASSWORD = getenv('PASSWORD') ?: ($_ENV['PASSWORD'] ?? null);
 
         $this->validateEnvVariables();
         $this->connect();
@@ -34,25 +24,38 @@ class Database {
     private function loadEnvFile($envFile) {
         $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         foreach ($lines as $line) {
-            if (empty($line) || strpos($line, '#') === 0 || strpos($line, '=') === false) continue;
+            if (empty($line) || strpos($line, '#') === 0 || strpos($line, '=') === false) {
+                continue;
+            }
             list($key, $value) = explode('=', $line, 2);
             $_ENV[trim($key)] = trim($value);
         }
     }
 
     private function validateEnvVariables() {
-        if (!$this->HOST || !$this->DBNAME || !$this->USERNAME) {
-            throw new Exception("Une ou plusieurs variables d’environnement sont manquantes.");
+        $required = ['HOST', 'DBNAME', 'USERNAME', 'PASSWORD'];
+        foreach ($required as $var) {
+            if (empty($this->$var)) {
+                throw new Exception("Variable d'environnement '$var' manquante");
+            }
         }
     }
 
     private function connect() {
         try {
-            $dsn = "mysql:host={$this->HOST};dbname={$this->DBNAME};charset=utf8mb4";
-            $this->pdo = new PDO($dsn, $this->USERNAME, $this->PASSWORD);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $dsn = sprintf(
+                "mysql:host=%s;dbname=%s;charset=utf8mb4",
+                $this->HOST,
+                $this->DBNAME
+            );
+            $this->pdo = new PDO($dsn, $this->USERNAME, $this->PASSWORD, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false
+            ]);
         } catch (PDOException $e) {
-            throw new Exception("Erreur de connexion à la base de données");
+            error_log("Erreur de connexion BDD : " . $e->getMessage());
+            throw new Exception('Erreur de connexion à la base de données');
         }
     }
 
@@ -60,10 +63,13 @@ class Database {
         if (self::$instance === null) {
             self::$instance = new self();
         }
-        return self::$instance;
+        return self::$instance->pdo;
     }
 
     public static function getConnection() {
-        return self::getInstance()->pdo;
+        return self::getInstance();
     }
 }
+
+
+
