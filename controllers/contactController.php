@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prenom = htmlspecialchars(trim($_POST['prenom']));
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $telephone = htmlspecialchars(trim($_POST['telephone']));
-    $message = htmlspecialchars(trim($_POST['message']));
+    $message = trim($_POST['message']);
 
     if (Contact::ajouter($nom, $prenom, $email, $telephone, $message)) {
         header('Location: ' . BASE_URL . 'views/contact.php?success=1');

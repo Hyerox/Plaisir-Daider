@@ -1,6 +1,5 @@
 <?php
 require_once dirname(__DIR__) . '/config/config.php';
-session_start();
 require_once BASE_PATH . '/models/user.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

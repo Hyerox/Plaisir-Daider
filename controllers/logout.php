@@ -1,6 +1,5 @@
 <?php
 require_once dirname(__FILE__) . "/../config/config.php";
-session_start();
 
 // Destroy all session data
 $_SESSION = array();

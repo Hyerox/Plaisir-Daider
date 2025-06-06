@@ -2,6 +2,21 @@
 require_once dirname(__FILE__) . '/../config/config.php'; 
 $pageTitle = 'Requêtes';
 require_once BASE_PATH . "/models/contact.php";
+
+// Vérification de l'authentification de l'utilisateur
+function checkAuth() {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: ' . BASE_URL . 'index.php');
+        exit;
+    }
+}
+
+// Appel de la vérification
+checkAuth();
+
 require_once BASE_PATH . "/partials/header.php";
 
 $contacts = Contact::getAll();
@@ -47,14 +62,21 @@ $contacts = Contact::getAll();
                             <td class="px-6 py-4 text-gray-700"><?= htmlspecialchars($contact['telephone']) ?></td>
                             <td class="px-6 py-4 text-gray-700">
                                 <div class="relative">
-                                    <div class="message-content <?= strlen($contact['message']) > 100 ? 'truncate' : '' ?>">
-                                        <?= nl2br(htmlspecialchars($contact['message'])) ?>
+                                    <div class="message-content max-w-md" style="white-space: pre-line;">
+                                        <?php if (strlen($contact['message']) > 100): ?>
+                                            <div class="truncated-message overflow-hidden" style="display: block; max-height: 2.5em; line-height: 1.25em;">
+                                                <?= nl2br(htmlspecialchars($contact['message'])) ?>
+                                            </div>
+                                            <div class="full-message" style="display: none;">
+                                                <?= nl2br(htmlspecialchars($contact['message'])) ?>
+                                            </div>
+                                            <button onclick="toggleMessage(this)" class="text-blue-600 hover:text-blue-800 text-sm mt-1" data-expanded="false">
+                                                Voir plus
+                                            </button>
+                                        <?php else: ?>
+                                            <?= nl2br(htmlspecialchars($contact['message'])) ?>
+                                        <?php endif; ?>
                                     </div>
-                                    <?php if (strlen($contact['message']) > 100): ?>
-                                        <button onclick="toggleMessage(this)" class="text-blue-600 hover:text-blue-800 text-sm mt-1" data-expanded="false">
-                                            Voir plus
-                                        </button>
-                                    <?php endif; ?>
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-gray-700"><?= date('d/m/Y H:i', strtotime($contact['created_at'])) ?></td>
@@ -145,15 +167,19 @@ function closeEditModal() {
 }
 
 function toggleMessage(button) {
-    const messageDiv = button.previousElementSibling;
+    const parentDiv = button.parentElement;
+    const truncatedMessage = parentDiv.querySelector('.truncated-message');
+    const fullMessage = parentDiv.querySelector('.full-message');
     const isExpanded = button.getAttribute('data-expanded') === 'true';
     
     if (isExpanded) {
-        messageDiv.classList.add('truncate');
+        truncatedMessage.style.display = 'block';
+        fullMessage.style.display = 'none';
         button.textContent = 'Voir plus';
         button.setAttribute('data-expanded', 'false');
     } else {
-        messageDiv.classList.remove('truncate');
+        truncatedMessage.style.display = 'none';
+        fullMessage.style.display = 'block';
         button.textContent = 'Voir moins';
         button.setAttribute('data-expanded', 'true');
     }

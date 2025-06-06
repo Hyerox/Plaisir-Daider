@@ -1,7 +1,6 @@
 <?php 
 // Changement du chemin d'inclusion pour utiliser un chemin absolu
 require_once dirname(__DIR__) . '/config/config.php'; 
-session_start(); 
 ?>
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
