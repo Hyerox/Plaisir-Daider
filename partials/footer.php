@@ -34,7 +34,7 @@
 
     <div class="mt-8 border-t border-gray-300 pt-4 text-center text-base px-4">
         <p class="mb-4">Afin d'éviter des problèmes de droits, la plupart des photos sur ce site ont été générées par l'intelligence artificielle.</p>
-        &copy; <?= date('Y') ?> Plaisir d'Aider. Tous droits réservés.
+        <p>&copy; <?= date('Y') ?> Plaisir d'Aider. Tous droits réservés. | <a href="<?= BASE_URL ?>views/mentions-legales.php" class="text-blue-600 hover:text-blue-800 underline">Mentions légales</a></p>
     </div>
 </footer>
 </body>

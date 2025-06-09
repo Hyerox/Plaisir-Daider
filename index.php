@@ -57,7 +57,7 @@ require_once BASE_PATH . "/partials/header.php";
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-bold text-center mb-12 text-[#1e291c] relative">
                 <span class="relative inline-block">
-                    À Propos de Nous
+                    À propos de nous
                     <div class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#a0b292] via-[#c7d8bc] to-[#a0b292]"></div>
                 </span>
             </h2>
@@ -75,7 +75,7 @@ require_once BASE_PATH . "/partials/header.php";
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold text-center mb-6 text-green-900">Notre secteur d'activité</h2>
+                    <h2 class="text-2xl font-bold text-center mb-6 text-green-900">Notre zone d'activité</h2>
                     <div class="bg-gradient-to-br from-white to-emerald-50 p-4 rounded-lg shadow-lg border border-emerald-100">
                         <div id="map" class="h-[400px] rounded-lg shadow-inner"></div>
                     </div>
