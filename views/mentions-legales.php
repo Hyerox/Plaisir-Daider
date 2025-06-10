@@ -19,6 +19,7 @@ require_once BASE_PATH . "/partials/header.php";
                 <div class="space-y-2 text-[#1a2819]">
                     <p>Ce site est édité par Plaisir D'aider</p>
                     <p>Siège social : Rocbaron, Var (83)</p>
+                    <p>SIRET : 492 142 815 00017</p>
                     <p>Téléphone : 06-69-02-34-00</p>
                     <p>Email : plaisirdaidervar@hotmail.fr</p>
                 </div>

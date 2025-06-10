@@ -27,7 +27,7 @@
                 <li>📍 Rocbaron, Var (83)</li>
                 <li>📞 06-69-02-34-00</li>
                 <li>✉️ <a href="mailto:plaisirdaidervar@hotmail.fr" class="text-blue-600 hover:text-blue-800 underline">plaisirdaidervar@hotmail.fr</a></li>
-                <li>Notre page <a href="https://www.facebook.com/AuPlaisirDaider" class="text-blue-600 hover:text-blue-800 underline">Facebook</a> pour plus d'informations et d'avis.</li>
+                <li>Notre page <a target="_blank" href="https://www.facebook.com/AuPlaisirDaider" class="text-blue-600 hover:text-blue-800 underline">Facebook</a> pour plus d'informations et d'avis.</li>
             </ul>
         </div>
     </div>
