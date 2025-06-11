@@ -101,20 +101,20 @@ require_once BASE_PATH . "/partials/header.php";
                         ["jardinage", BASE_URL . "images/jardinage.webp", "Jardinage", "Entretien de votre jardin"],
                         ["bricolage", BASE_URL . "images/bricolage.webp", "Bricolage", "Travaux de petit bricolage"],
                         ["debarras", BASE_URL . "images/debarras.webp", "Débarras", "Débarrassage de surplus"],
-                        ["transport", BASE_URL . "images/transport.webp", "Transport", "Accompagnement et transport de personnes"]
+                        ["transport", BASE_URL . "images/transport.webp", "Transport", "Transport accompagné"]
                     ];
                     
                     foreach ($services as [$slug, $img, $title, $desc]) {
                         echo "<div class='w-full flex-shrink-0'>
-                            <div class='bg-[#2f3e2d]/95 p-6 rounded-lg shadow-lg border-2 border-[#cde0c6] mx-4 overflow-hidden'>
-                                <div class='h-[300px] md:h-[700px] -mx-6 -mt-6 mb-4 relative'>
+                            <div class='bg-[#2f3e2d]/95 p-3 xs:p-4 sm:p-6 rounded-lg shadow-lg border-2 border-[#cde0c6] mx-1 xs:mx-2 sm:mx-4 overflow-hidden'>
+                                <div class='h-[300px] md:h-[700px] -mx-3 xs:-mx-4 sm:-mx-6 -mt-3 xs:-mt-4 sm:-mt-6 mb-4 relative'>
                                     <a href='./views/{$slug}.php' aria-label='Page {$title}'><img src='{$img}' class='w-full h-full object-cover' alt='{$title}'/></a>
                                     <div class='absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#4e5e48] to-transparent opacity-50'></div>
                                 </div>
                                 <div class='relative z-10'>
                                     <h3 class='text-2xl font-semibold mb-2 text-[#f5f5f5]'>{$title}</h3>
-                                    <p class='text-[#f5f5f5]'>{$desc}</p>
-                                    <p class='text-[#f5f5f5] mt-2 mb-12 md:mb-2 italic'>Cliquez sur l'image pour plus d'informations ...</p>
+                                    <p class='text-[#f5f5f5] line-clamp-2'>{$desc}</p>
+                                    <p class='text-[#f5f5f5] mt-2 mb-12 md:mb-2 italic text-sm'>Cliquez sur l'image pour plus d'informations...</p>
                                 </div>
                             </div>
                         </div>";
@@ -123,11 +123,11 @@ require_once BASE_PATH . "/partials/header.php";
                 </div>
 
                 <!-- Boutons navigation -->
-                <button class="absolute left-2 top-1/2 -translate-y-1/2 bg-[#dce7e5] p-3 rounded-full shadow-lg bg-orange-300 hover:bg-[#c7d8bc] transition-all" id="prevBtn" aria-label="Image précédente">
-                    <i class="fas fa-chevron-left text-[#2f3e2d]"></i>
+                <button class="absolute left-1 xs:left-4 sm:left-2 top-1/2 -translate-y-1/2 bg-[#dce7e5] p-2 xs:p-3 rounded-full shadow-lg bg-orange-300 hover:bg-[#c7d8bc] transition-all z-10" id="prevBtn" aria-label="Image précédente">
+                    <i class="fas fa-chevron-left text-[#2f3e2d] text-sm xs:text-base"></i>
                 </button>
-                <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-[#dce7e5] p-3 rounded-full shadow-lg bg-orange-300 hover:bg-[#c7d8bc] transition-all" id="nextBtn" aria-label="Image suivante">
-                    <i class="fas fa-chevron-right text-[#2f3e2d]"></i>
+                <button class="absolute right-1 xs:right-4 sm:right-2 top-1/2 -translate-y-1/2 bg-[#dce7e5] p-2 xs:p-3 rounded-full shadow-lg bg-orange-300 hover:bg-[#c7d8bc] transition-all z-10" id="nextBtn" aria-label="Image suivante">
+                    <i class="fas fa-chevron-right text-[#2f3e2d] text-sm xs:text-base"></i>
                 </button>
 
                 <!-- Indicateurs -->

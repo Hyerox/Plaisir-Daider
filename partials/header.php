@@ -9,8 +9,19 @@ require_once dirname(__DIR__) . '/config/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plaisir d'Aider - Services à la personne à Rocbaron, Var : ménage, jardinage, bricolage, débarras et transport. 18 ans d'expérience, 50% de crédit d'impôt sur tous nos services.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'xs': '430px',
+                    },
+                }
+            }
+        }
+    </script>
     <title><?php echo isset($pageTitle) ? $pageTitle : 'Plaisir d\'Aider'; ?></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="<?= BASE_URL ?>src/main.js"></script>
@@ -64,15 +75,15 @@ require_once dirname(__DIR__) . '/config/config.php';
                 <!-- Desktop Menu (existant) -->
                 <div class="p-8">
                     <div class="hidden md:flex items-center space-x-10">
-                        <a href="<?= BASE_URL ?>index.php" class="text-lg text-[#4e5e48] hover:text-[#2f3e2d] transition duration-300 px-4 py-3 hover:bg-[#cde0c6]/30 hover:rounded-xl">Accueil</a>
+                        <a href="<?= BASE_URL ?>index.php" class="text-lg text-[#4e5e48] hover:text-[#2f3e2d] hover:shadow-xl hover:rounded-xl transition duration-300 px-4 py-3">Accueil</a>
                         
                         <!-- Prestations avec dropdown -->
                         <div class="relative group">
-                            <a href="<?= BASE_URL ?>#prestations" class="text-lg text-[#4e5e48] hover:text-[#2f3e2d] transition duration-300 px-4 py-3 hover:bg-[#cde0c6]/30 hover:rounded-xl">Nos Prestations</a>
+                            <a href="<?= BASE_URL ?>#prestations" class="text-lg text-[#4e5e48] hover:text-[#2f3e2d] hover:shadow-xl hover:rounded-xl transition duration-300 px-4 py-3">Nos Prestations</a>
                             <div class="absolute left-0 hidden group-hover:block mt-0 w-48 bg-gradient-to-b from-[#f7f6f2] to-[#eef3e6] rounded-lg shadow-xl">
                                 <!-- Ajout d'un div invisible pour combler l'espace -->
                                 <div class=""></div>
-                                <a href="<?= BASE_URL ?>views/menage.php" class="block px-4 py-3 text-[#4e5e48] hover:text-[#2f3e2d] hover:bg-[#cde0c6]/30 hover:rounded-xl hover:shadow-xl">Ménage</a>
+                                <a href="<?= BASE_URL ?>views/menage.php" class="block px-4 py-3 text-[#4e5e48] hover:text-[#2f3e2d] hover:rounded-xl hover:shadow-xl">Ménage</a>
                                 <a href="<?= BASE_URL ?>views/jardinage.php" class="block px-4 py-3 text-[#4e5e48] hover:text-[#2f3e2d] hover:rounded-xl hover:shadow-xl">Jardinage</a>
                                 <a href="<?= BASE_URL ?>views/bricolage.php" class="block px-4 py-3 text-[#4e5e48] hover:text-[#2f3e2d] hover:rounded-xl hover:shadow-xl">Bricolage</a>
                                 <a href="<?= BASE_URL ?>views/debarras.php" class="block px-4 py-3 text-[#4e5e48] hover:text-[#2f3e2d] hover:rounded-xl hover:shadow-xl">Débarras</a>
@@ -91,7 +102,7 @@ require_once dirname(__DIR__) . '/config/config.php';
                         <?php endif; ?>
 
                         <?php if(isset($_SESSION['user_id'])): ?>
-                        <a href="<?= BASE_URL ?>controllers/logout.php" class="text-[#2f3e2d] bg-red-100 px-4 rounded-lg hover:bg-red-200 transition duration-300 py-2 border-2 border-red-200">Déconnexion</a>
+                        <a href="<?= BASE_URL ?>controllers/logout.php" class="text-[#2f3e2d] bg-red-100 px-4 rounded-lg hover:bg-red-200 hover:shadow-xl transition duration-300 py-2 border-2 border-red-200">Déconnexion</a>
                         <?php endif; ?>
                     </div>
                 </div>

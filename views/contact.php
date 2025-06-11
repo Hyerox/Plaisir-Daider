@@ -18,11 +18,13 @@ require_once BASE_PATH . "/partials/header.php";
                     <div>
                         <label for="nom" class="block text-[#2f3e2d] font-medium mb-2">Nom</label>
                         <input type="text" id="nom" name="nom" required placeholder="Dupont"
+                            pattern="[A-Za-zÀ-ÿ\s\-']+" title="Seules les lettres, espaces, tirets et apostrophes sont autorisés"
                             class="w-full px-4 py-2 border border-[#cde0c6] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a0b292]">
                     </div>
                     <div>
                         <label for="prenom" class="block text-[#2f3e2d] font-medium mb-2">Prénom</label>
                         <input type="text" id="prenom" name="prenom" required placeholder="Gérard"
+                            pattern="[A-Za-zÀ-ÿ\s\-']+" title="Seules les lettres, espaces, tirets et apostrophes sont autorisés"
                             class="w-full px-4 py-2 border border-[#cde0c6] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#a0b292]">
                     </div>
                 </div>
