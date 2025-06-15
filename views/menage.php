@@ -20,7 +20,7 @@ require_once BASE_PATH . "/partials/header.php";
             </div>
         </div>
     </section>
-    <article class="py-16 px-4 bg-gradient-to-br from-[#f7f6f2] via-[#eef3e6] to-[#e1e9d4]">
+    <article class="py-16 px-4 bg-gradient-to-br from-[#e5e4e0] via-[#dce5d4] to-[#c9d1bc]">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-center mb-12 text-[#2f3e2d]">Nos Services d'Entretien Intérieur</h2>
             

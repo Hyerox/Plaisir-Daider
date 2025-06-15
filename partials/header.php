@@ -9,17 +9,6 @@ require_once dirname(__DIR__) . '/config/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plaisir d'Aider - Services à la personne à Rocbaron, Var : ménage, jardinage, bricolage, débarras et transport. 18 ans d'expérience, 50% de crédit d'impôt sur tous nos services.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    screens: {
-                        'xs': '430px',
-                    },
-                }
-            }
-        }
-    </script>
     <title><?php echo isset($pageTitle) ? $pageTitle : 'Plaisir d\'Aider'; ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />

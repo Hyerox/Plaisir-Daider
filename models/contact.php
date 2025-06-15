@@ -9,7 +9,6 @@ class Contact {
         return $stmt->execute([$nom, $prenom, $email, $telephone, $message]);
     }
 
-    // models/Contact.php
     public static function getAll() {
         $pdo = Database::getConnection();
         $stmt = $pdo->query("SELECT * FROM contact ORDER BY created_at DESC");

@@ -36,7 +36,7 @@ require_once BASE_PATH . "/partials/header.php";
                         Découvrir nos prestations
                     </a>
                     <a href="./views/contact.php" 
-                       class="bg-white text-[#1a2819] border border-[#a8bfa0] px-8 py-4 rounded-lg font-bold hover:bg-white transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                       class="bg-[#cce3c1] text-[#1a2819] border border-[#a8bfa0] px-8 py-4 rounded-lg font-bold hover:bg-[#b9d5aa] transition-all duration-300 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                         Nous contacter
                     </a>
                 </div>

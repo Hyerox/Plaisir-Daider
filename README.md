@@ -1,76 +1,87 @@
-# 🌿 Plaisir d'Aider
+# 🧹 Plaisir d'Aider
 
-Site vitrine pour une entreprise de services à la personne (ménage, jardinage, transport, bricolage, débarras…) basée à Rocbaron (Var, France).
+Site vitrine développé pour une entreprise de services à la personne, permettant de présenter ses prestations et recueillir les demandes de contact.
+## 🌐 Lien en ligne
 
-## 🚀 Objectifs
+🔗 [https://plaisir-daider.onrender.com](https://plaisir-daider.onrender.com)
 
-- Présenter les prestations proposées par l’entreprise.
-- Permettre à l'utilisateur d’envoyer des demandes via un formulaire de contact.
-- Fournir les coordonnées de l’entreprise.
-- Offrir une interface d’administration sécurisée pour gérer les requêtes et modifier le contenu du site.
+## 🛠️ Technologies utilisées
 
----
+- PHP (MVC)
+- MySQL
+- Tailwind CSS
+- JavaScript
+- Docker
+- VSCode
+- Git / GitHub
+- AlwaysData (hébergement base de données)
 
-## 🧱 Architecture technique
+## 📁 Architecture du projet
 
-- **Langages** : PHP (MVC), HTML, CSS (Tailwind), JavaScript
-- **Base de données** : MySQL (hébergée sur AlwaysData)
-- **Gestion des dépendances** : Composer (PHP) & npm (Tailwind)
-- **Environnement de développement** : Docker (PHP + MySQL)
-- **Hébergement** : Render
+```
+/PlaisirDaider
+│
+├── config/             → Fichiers de configuration 
+├── controllers/        → Contrôleurs PHP
+├── models/             → Modèles de données (PDO, requêtes)
+├── views/              → Fichiers HTML avec Tailwind (frontend)
+├── images/             → Toutes les images utile au projet
+├── src/                → fichier js
+├── dockerfile          → Image Docker pour l’environnement PHP
+├── .env                → Variables d’environnement (HOST, DBNAME, USERNAME, PASSWORD)
+├── .htaccess           → Configuration Apache (URL rewriting, cache, sécurité)
+├── db.php              → Classe de connexion PDO à la base de données
+├── index.php           → Page accueil
+├── README.md           → Documentation du projet (présentation, installation, utilisation)
+└── sql.sql             → Script SQL de création de la base de données et des tables
 
----
 
-## 📁 Arborescence
+## ✅ Fonctionnalités principales
 
-📦 plaisir-daider
-├── config/ # Fichiers de config (connexion DB, variables d’environnement…)
-├── controllers/ # Contrôleurs PHP
-├── models/ # Modèles PHP (classes métier + base de données)
-├── views/ # Vues HTML + Tailwind
-│ └── partials/ # Header, footer, etc.
-├── public/ # Contenu public (images, CSS, JS)
-├── .env # Variables d’environnement (non versionné)
-├── docker-compose.yml # Configuration Docker
-├── tailwind.config.js # Config Tailwind
-├── README.md # Ce fichier
-└── ...
+- Affichage des services proposés
+- Formulaire de contact
+- Interface d'administration (connexion sécurisée)
+- Consultation et gestion des requêtes utilisateurs
+- Édition dynamique de certains contenus (texte/image)
 
-yaml
-Copier
-Modifier
+## ⚙️ Installation en local
 
----
+1. Cloner le dépôt :
+   ```bash
+   git clone https://github.com/Hyerox/plaisir-daider.git
+   ```
 
-## 🔧 Installation (en local)
+2. Copier le fichier `.env.example` et le renommer en `.env`, puis le compléter :
 
-1. **Cloner le dépôt** :
+   ```
+   HOST=localhost
+   DBNAME=nom_base
+   USERNAME=root
+   PASSWORD=motdepasse
+   ```
 
-```bash
-git clone https://github.com/votre-utilisateur/plaisir-daider.git
-cd plaisir-daider
-Configurer l’environnement :
+3. Lancer le conteneur Docker :
+   ```bash
+   docker-compose up --build
+   ```
 
-Créer un fichier .env à la racine avec vos variables :
+4. Accéder à l’application :
+   ```
+   http://localhost:8080/PlaisirDaider
+   ```
 
-env
-Copier
-Modifier
-HOST=localhost
-DBNAME=plaisir
-USERNAME=root
-PASSWORD=root
-Lancer Docker :
+## 🔐 Authentification
 
-bash
-Copier
-Modifier
-docker-compose up -d
-Installer les dépendances (si besoin) :
+L'accès à l'interface d'administration est sécurisé par identifiants (hashés en BDD via `password_hash()`).
 
-bash
-Copier
-Modifier
-composer install
-npm install
-npm run dev    # Pour compiler Tailwind
+## 🧪 Fonctionnalités futures possibles
+
+- Base de données plus détaillées
+- Gestion des utilisateurs avec rôles
+- Interface de back-office plus évoluée
+
+## 👨‍💻 Réalisé par
+
+**Nathan Didier**  
+Projet encadré par l’AFPA Saint-Jérôme (2024–2025)  
+Formation Développeur Web et Web Mobile 
